@@ -1,0 +1,39 @@
+<?php
+
+$lang['post'] = '文章';
+$lang['comment'] = '回覆';
+$lang['more'] = '其他';
+$lang['config'] = '設定';
+$lang['logout'] = '登出';
+$lang['logged_out'] = '已登出';
+$lang['login'] = '登入';
+$lang['logged_in'] = '已登入';
+$lang['redirect'] = '回到';
+$lang['leave_reply'] = '發表回覆';
+$lang['said'] = ' 說道';
+$lang['saved'] = '已儲存';
+$lang['add'] = '新增一篇';
+$lang['edit'] = '編輯一篇';
+$lang['title'] = '標題';
+$lang['content'] = '內容';
+$lang['deleted'] = '已刪除';
+$lang['name'] = '名稱';
+$lang['bot'] = '留言機器人： 請留空';
+$lang['read_more'] = '繼續閱讀';
+$lang['search'] = '搜尋';
+$lang['link'] = '網誌連結';
+$lang['category'] = '網誌分類';
+$lang['archive'] = '每月記事';
+$lang['url'] = '網址';
+$lang['categorize'] = '分類';
+$lang['categorized'] = '已分類';
+$lang['page'] = '頁 ';
+$lang['prev'] = '較新的內容';
+$lang['next'] = '較舊的內容';
+$lang['password'] = '密碼';
+$lang['powered_by'] = '使用';
+$lang['feed'] = '訂閱網誌';
+$lang['theme'] = '佈景主題';
+$lang['lang'] = '語言套件';
+$lang['blog_name'] = '網誌名稱';
+?>

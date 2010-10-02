@@ -1,0 +1,38 @@
+html {
+	border-top: 20px solid #fc3;
+	padding: 2% 10%;
+	letter-spacing: 1px;
+}
+img {
+	width: 50%;
+}
+a {
+	color: #036;
+	padding: 0 1px;
+}
+h1 {
+	color: #666;
+	font-size: large;
+}
+h2 {
+	font-size: x-large;
+}
+h3 {
+	color: #666;
+	font-size: medium;
+}
+h4 {
+	font-size: small;
+	line-height: 2;
+}
+h5 {
+	border-bottom: 1px dotted #666;
+	font-size: small;
+	text-align: right;
+}
+h6 {
+	border-bottom: 1px dotted #666;
+	color: #660;
+	font-size: small;
+	text-align: right;
+}

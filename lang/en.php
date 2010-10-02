@@ -1,0 +1,39 @@
+<?php
+
+$lang['post'] = 'Post';
+$lang['comment'] = 'Comment';
+$lang['more'] = 'More';
+$lang['config'] = 'Config';
+$lang['logout'] = 'Logout';
+$lang['logged_out'] = 'Logged out';
+$lang['login'] = 'Login';
+$lang['logged_in'] = 'Logged in';
+$lang['redirect'] = 'Go back to';
+$lang['leave_reply'] = 'Leave a reply';
+$lang['said'] = ' said';
+$lang['saved'] = ' saved';
+$lang['add'] = 'Add new ';
+$lang['edit'] = 'Edit previous ';
+$lang['title'] = 'Title';
+$lang['content'] = 'Content';
+$lang['deleted'] = ' deleted';
+$lang['name'] = 'Name';
+$lang['bot'] = 'Bot： Please leave this field empty';
+$lang['read_more'] = 'Read more';
+$lang['search'] = 'Search';
+$lang['link'] = 'Link';
+$lang['category'] = 'Category';
+$lang['archive'] = 'Archive';
+$lang['url'] = 'URL';
+$lang['categorize'] = 'Categorize previous ';
+$lang['categorized'] = ' categorized';
+$lang['page'] = 'Page ';
+$lang['prev'] = 'Newer';
+$lang['next'] = 'Older';
+$lang['password'] = 'Password';
+$lang['powered_by'] = 'Powered by';
+$lang['feed'] = 'Feed';
+$lang['theme'] = 'Theme';
+$lang['lang'] = 'Language';
+$lang['blog_name'] = 'Blog name';
+?>
