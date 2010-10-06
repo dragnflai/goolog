@@ -4,7 +4,29 @@ require 'header.php';
 
 //run goolog
 
-if(isset($_GET['comment']))
+if(isset($_GET['post']))
+{
+	$data['meta'] = $lang['post'];
+	$data['body'].= '<h1>'.(isset($_SESSION['admin'])? '<a href="add.php?post">[+]</a>' : '').$data['meta'].'</h1>';
+	$count = db_qrs('SELECT count(*) FROM post');
+	$total = ceil($count['count(*)']/4);
+	if($_GET['post'] < 1 || $_GET['post'] > $total) $_GET['post']=1;
+	$offset = 4*($_GET['post']-1);
+	$_ps = db_qr('SELECT * FROM post ORDER BY id DESC LIMIT 4 OFFSET '.$offset);
+	foreach($_ps as $ps)
+	{
+		$count = db_qrs('SELECT count(*) FROM comment WHERE pid = '.$ps['id']);
+		$_ct = db_qrs('SELECT name FROM category WHERE id = '.$ps['pid']);
+		$data['body'].= '<h3>'.(isset($_SESSION['admin'])? '<a href="categorize.php?post='.$ps['id'].'">[#]</a><a href="edit.php?post='.$ps['id'].'">[!]</a><a href="delete.php?post='.$ps['id'].'">[x]</a>' : '').htmlspecialchars($ps['title']).'</h3>
+
+		<h4>'.nl2br($ps['content']).'</h4>
+		<h4><a href="view.php?post='.$ps['id'].'">'.$lang['read_more'].'</a></h4>
+		<h6><a href="view.php?category='.$ps['pid'].'">'.htmlspecialchars($_ct['name']).'</a> | '.$lang['comment'].' ('.$count['count(*)'].') | '.strftime('%B %e, %Y, %l:%M %p', $ps['date']).'</h6>';
+
+	}
+	$data['body'].= '<h4>'.($_GET['post'] > 1? '<a href="index.php?post='.($_GET['post']-1).'">← '.$lang['prev'].'</a> | ' : '').$lang['page'].$_GET['post'].' of '.$total.($_GET['post'] < $total? ' | <a href="index.php?post='.($_GET['post']+1).'">'.$lang['next'].' →</a>' : '').'</h4>';
+}
+elseif(isset($_GET['comment']))
 {
 	$data['meta'] = $lang['comment'];
 	$data['body'].= '<h1>'.$data['meta'].'</h1>';
@@ -22,6 +44,8 @@ if(isset($_GET['comment']))
 	}
 	$data['body'].= '<h4>'.($_GET['comment'] > 1? '<a href="index.php?comment='.($_GET['comment']-1).'">← '.$lang['prev'].'</a> | ' : '').$lang['page'].$_GET['comment'].' of '.$total.($_GET['comment'] < $total? ' | <a href="index.php?comment='.($_GET['comment']+1).'">'.$lang['next'].' →</a>' : '').'</h4>';
 }
+
+
 elseif(isset($_GET['more']))
 {
 	$data['meta'] = $lang['more'];
@@ -61,23 +85,7 @@ elseif(isset($_GET['more']))
 }
 else
 {
-	$data['meta'] = $lang['post'];
-	$data['body'].= '<h1>'.(isset($_SESSION['admin'])? '<a href="add.php?post">[+]</a>' : '').$data['meta'].'</h1>';
-	$count = db_qrs('SELECT count(*) FROM post');
-	$total = ceil($count['count(*)']/4);
-	if($_GET['post'] < 1 || $_GET['post'] > $total) $_GET['post']=1;
-	$offset = 4*($_GET['post']-1);
-	$_ps = db_qr('SELECT * FROM post ORDER BY id DESC LIMIT 4 OFFSET '.$offset);
-	foreach($_ps as $ps)
-	{
-		$count = db_qrs('SELECT count(*) FROM comment WHERE pid = '.$ps['id']);
-		$_ct = db_qrs('SELECT name FROM category WHERE id = '.$ps['pid']);
-		$data['body'].= '<h3>'.(isset($_SESSION['admin'])? '<a href="categorize.php?post='.$ps['id'].'">[#]</a><a href="edit.php?post='.$ps['id'].'">[!]</a><a href="delete.php?post='.$ps['id'].'">[x]</a>' : '').htmlspecialchars($ps['title']).'</h3>
-		<h4>'.nl2br($ps['content']).'</h4>
-		<h4><a href="view.php?post='.$ps['id'].'">'.$lang['read_more'].'</a></h4>
-		<h6><a href="view.php?category='.$ps['pid'].'">'.htmlspecialchars($_ct['name']).'</a> | '.$lang['comment'].' ('.$count['count(*)'].') | '.strftime('%B %e, %Y, %l:%M %p', $ps['date']).'</h6>';
-	}
-	$data['body'].= '<h4>'.($_GET['post'] > 1? '<a href="index.php?post='.($_GET['post']-1).'">← '.$lang['prev'].'</a> | ' : '').$lang['page'].$_GET['post'].' of '.$total.($_GET['post'] < $total? ' | <a href="index.php?post='.($_GET['post']+1).'">'.$lang['next'].' →</a>' : '').'</h4>';
+	header('Location: index.php?post');
 }
 
 require 'footer.php';

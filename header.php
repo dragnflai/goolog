@@ -1,10 +1,14 @@
 <?php
+
+//check if goolog is installed
+if(!is_file('data/db.sqlite')) die('Please <a href="install.php">install</a>');
+
 session_start();
 
 //load config
 require 'include/sqlite.php';
-//check if goolog is installed
-if(!is_file('data/db.sqlite')) die('Please <a href="install.php">install</a>');
+
+header('Content-Type: text/html; charset=UTF-8'); 
 
 $conf = db_qr('SELECT value FROM conf');
 $data['head'] = $conf[0]['value'];

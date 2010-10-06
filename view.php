@@ -39,6 +39,10 @@ elseif(isset($_GET['archive']))
 		$data['body'].= '<h4>'.(isset($_SESSION['admin'])? '<a href="categorize.php?post='.$ps['id'].'">[#]</a><a href="edit.php?post='.$ps['id'].'">[!]</a><a href="delete.php?post='.$ps['id'].'">[x]</a>' : '').'<a href="view.php?post='.$ps['id'].'">'.$ps['title'].'</a></h4>';
 	}
 }
+else
+{
+	header('Location: index.php');
+}
 
 require 'footer.php';
 

@@ -37,6 +37,10 @@ elseif(isset($_GET['category'], $_SESSION['admin']))
 	$data['body'].= '<h1>'.$data['meta'].'</h1>
 	<h4><a href="index.php?more">← '.$lang['redirect'].': '.$lang['more'].'</a></h4>';
 }
+else
+{
+	header('Location: index.php');
+}
 
 require 'footer.php';
 ?>

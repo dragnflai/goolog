@@ -28,6 +28,10 @@ elseif(isset($_GET['logout'], $_SESSION['admin']))
 	$data['body'].= '<h1>'.$data['meta'].'</h1>
 	<h4><a href="index.php?post">← '.$lang['redirect'].': '.$lang['post'].'</a></h4>';
 }
+else
+{
+	header('Location: index.php');
+}
 
 require 'footer.php';
 

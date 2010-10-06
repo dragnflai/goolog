@@ -25,6 +25,10 @@ if(isset($_GET['post'], $_SESSION['admin']))
 		</form>';
 	}
 }
+else
+{
+	header('Location: index.php');
+}
 
 require 'footer.php';
 ?>
