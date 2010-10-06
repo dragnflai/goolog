@@ -5,6 +5,7 @@
 <meta name="description" content="<?php echo $data['meta'];?>"/>
 <title><?php echo $data['meta'];?> - <?php echo $data['head'];?></title>
 <link rel="stylesheet" type="text/css" href="theme/<?php echo $data['theme']?>.css"/>
+<link rel="alternate" type="application/atom+xml" href="feed.php"/>
 </head>
 <body>
 <h2><?php echo $data['head'];?></h2>
