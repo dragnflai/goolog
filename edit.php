@@ -12,14 +12,14 @@ if(isset($_GET['post'], $_SESSION['admin']))
 	}
 	else
 	{
-		$_ps = db_qrs('SELECT title, content FROM post WHERE id = \''.$_GET['post'].'\'');
+		$post = db_qrs('SELECT title, content FROM post WHERE id = \''.$_GET['post'].'\'');
 		$data['meta'] = $lang['edit'].$lang['post'];
 		$data['body'].= '<form action="edit.php?post='.$_GET['post'].'" method="post">
 		<h1>'.$data['meta'].'</h1>
 		<h4>'.$lang['title'].'</h4>
-		<h4><input name="title" value="'.htmlspecialchars($_ps['title']).'"/></h4>
+		<h4><input name="title" value="'.htmlspecialchars($post['title']).'"/></h4>
 		<h4>'.$lang['content'].'</h4>
-		<h4><textarea name="content" cols="60" rows="20">'.htmlspecialchars($_ps['content']).'</textarea></h4>
+		<h4><textarea name="content" cols="60" rows="20">'.htmlspecialchars($post['content']).'</textarea></h4>
 		<h4><input type="submit"/></h4>
 		</form>';
 	}
@@ -30,21 +30,21 @@ elseif(isset($_GET['comment'], $_SESSION['admin']))
 	if(isset($_POST['author'][0], $_POST['content'][0]))
 	{
 		db_q('UPDATE comment SET author =\''.$_POST['author'].'\', content = \''.$_POST['content'].'\' WHERE id = \''.$_GET['comment'].'\'');
-		$_ps = db_qrs('SELECT id, title FROM post WHERE id = ( SELECT pid FROM comment WHERE id = \''.$_GET['comment'].'\')');
+		$post = db_qrs('SELECT id, title FROM post WHERE id = ( SELECT pid FROM comment WHERE id = \''.$_GET['comment'].'\')');
 		$data['meta'] = $lang['comment'].$lang['saved'];
 		$data['body'].= '<h1>'.$data['meta'].'</h1>
-		<h4><a href="view.php?post='.$_ps['id'].'">← '.$lang['redirect'].': '.htmlspecialchars($_ps['title']).'</a></h4>';
+		<h4><a href="view.php?post='.$post['id'].'">← '.$lang['redirect'].': '.htmlspecialchars($post['title']).'</a></h4>';
 	}
 	else
 	{
-		$_cm = db_qrs('SELECT author, content FROM comment WHERE id = \''.$_GET['comment'].'\'');
+		$comment = db_qrs('SELECT author, content FROM comment WHERE id = \''.$_GET['comment'].'\'');
 		$data['meta'] = $lang['edit'].$lang['comment'];
 		$data['body'].= '<form action="edit.php?comment='.$_GET['comment'].'" method="post">
 		<h1>'.$data['meta'].'</h1>
 		<h4>'.$lang['name'].'</h4>
-		<h4><input name="author" value="'.htmlspecialchars($_cm['author']).'"/></h4>
+		<h4><input name="author" value="'.htmlspecialchars($comment['author']).'"/></h4>
 		<h4>'.$lang['content'].'</h4>
-		<h4><textarea name="content" cols="60" rows="20">'.htmlspecialchars($_cm['content']).'</textarea></h4>
+		<h4><textarea name="content" cols="60" rows="20">'.htmlspecialchars($comment['content']).'</textarea></h4>
 		<h4><input type="submit"/></h4>
 		</form>';
 	}
@@ -61,14 +61,14 @@ elseif(isset($_GET['link'], $_SESSION['admin']))
 	}
 	else
 	{
-		$_ln = db_qrs('SELECT name, url FROM link WHERE id = \''.$_GET['link'].'\'');
+		$link = db_qrs('SELECT name, url FROM link WHERE id = \''.$_GET['link'].'\'');
 		$data['meta'] = $lang['edit'].$lang['link'];
 		$data['body'].= '<form action="edit.php?link='.$_GET['link'].'" method="post">
 		<h1>'.$data['meta'].'</h1>
 		<h4>'.$lang['name'].'</h4>
-		<h4><input name="name" value="'.htmlspecialchars($_ln['name']).'"/></h4>
+		<h4><input name="name" value="'.htmlspecialchars($link['name']).'"/></h4>
 		<h4>'.$lang['url'].'</h4>
-		<h4><input name="url" value="'.htmlspecialchars($_ln['url']).'"/></h4>
+		<h4><input name="url" value="'.htmlspecialchars($link['url']).'"/></h4>
 		<h4><input type="submit"/></h4>
 		</form>';
 	}
@@ -85,11 +85,11 @@ elseif(isset($_GET['category'], $_SESSION['admin']))
 	}
 	else
 	{
-		$_ct = db_qrs('SELECT name FROM category WHERE id = \''.$_GET['category'].'\'');
+		$category = db_qrs('SELECT name FROM category WHERE id = \''.$_GET['category'].'\'');
 		$data['meta'] = $lang['edit'].$lang['category'];
 		$data['body'].= '<form action="edit.php?category='.$_GET['category'].'" method="post">
 		<h1>'.$data['meta'].'</h1>
-		<h4><input name="name" value="'.htmlspecialchars($_ct['name']).'"/></h4>
+		<h4><input name="name" value="'.htmlspecialchars($category['name']).'"/></h4>
 		<h4><input type="submit"/></h4>
 		</form>';
 	}

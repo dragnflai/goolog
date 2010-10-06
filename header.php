@@ -30,6 +30,7 @@ if(isset($_POST))
 
 // escape sql
 
-if(isset($_GET)) $_GET = array_map('sqlite_escape_string', $_GET);
+if(isset($_GET))
+	$_GET = array_map('sqlite_escape_string', $_GET);
 
 ?>

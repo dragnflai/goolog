@@ -16,8 +16,8 @@ if(isset($_SESSION['admin']))
 	}
 	else
 	{
-		$_theme = glob('theme/*.css');
-		$_locale = glob('lang/*.php');
+		$themes = glob('theme/*.css');
+		$languages = glob('lang/*.php');
 		$data['meta'] = $lang['config'];
 		$data['body'].= '<form action="config.php" method="post">
 		<h1>'.$data['meta'].'</h1>
@@ -27,7 +27,7 @@ if(isset($_SESSION['admin']))
 		<h4><input name="title" value="'.$data['head'].'"/></h4>
 		<h4>'.$lang['theme'].'</h4>
 		<h4><select name="theme">';
-		foreach($_theme as $theme)
+		foreach($themes as $theme)
 		{
 			$value = basename($theme,'.css');
 			$data['body'].= '<option value="'.$value.'">'.$value.'</theme>';
@@ -35,9 +35,9 @@ if(isset($_SESSION['admin']))
 		$data['body'].= '</select></h4>
 		<h4>'.$lang['lang'].'</h4>
 		<h4><select name="lang">';
-		foreach($_locale as $locale)
+		foreach($languages as $language)
 		{
-			$value = basename($locale,'.php');
+			$value = basename($language,'.php');
 			$data['body'].= '<option value="'.$value.'">'.$value.'</theme>';
 		}
 		$data['body'].= '</select></h4>

@@ -26,17 +26,17 @@ if(isset($_GET['post'], $_SESSION['admin']))
 
 elseif(isset($_GET['comment']))
 {
-	$_ps = db_qrs('SELECT title FROM post WHERE id = \''.$_GET['comment'].'\'');
+	$post = db_qrs('SELECT title FROM post WHERE id = \''.$_GET['comment'].'\'');
 	if(isset($_POST['author'][0], $_POST['content'][0], $_POST['bot']) && !isset($_POST['bot'][0]))
 	{
 		db_q('INSERT INTO comment (pid, date, author, content) VALUES (\''.$_GET['comment'].'\', '.time().', \''.$_POST['author'].'\', \''.$_POST['content'].'\')');
 		$data['meta'] = $lang['comment'].$lang['saved'];
 		$data['body'].= '<h1>'.$data['meta'].'</h1>
-		<h4><a href="view.php?post='.$_GET['comment'].'">← '.$lang['redirect'].': '.$_ps['title'].'</a></h4>';
+		<h4><a href="view.php?post='.$_GET['comment'].'">← '.$lang['redirect'].': '.$post['title'].'</a></h4>';
 	}
 	else
 	{
-		$data['meta'] = $lang['add'].$lang['comment'].': '.htmlspecialchars($_ps['title']);
+		$data['meta'] = $lang['add'].$lang['comment'].': '.htmlspecialchars($post['title']);
 		$data['body'].= '<form action="add.php?comment='.$_GET['comment'].'" method="post">
 		<h1>'.$data['meta'].'</h1>
 		<h4>'.$lang['name'].'</h4>
