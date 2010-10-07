@@ -1,7 +1,10 @@
-html {
+#container {
 	border-top: 20px solid #fc3;
 	padding: 2% 10%;
 	letter-spacing: 1px;
+}
+ul {
+	list-style: none;
 }
 img {
 	width: 50%;
@@ -21,16 +24,19 @@ h3 {
 	color: #666;
 	font-size: medium;
 }
-h4 {
+p {
 	font-size: small;
 	line-height: 2;
 }
-h5 {
+#menu {
 	border-bottom: 1px dotted #666;
 	font-size: small;
 	text-align: right;
 }
-h6 {
+#menu ul li, #footer ul li {
+	display: inline;
+}
+.meta {
 	border-bottom: 1px dotted #666;
 	color: #660;
 	font-size: small;

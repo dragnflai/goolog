@@ -8,16 +8,16 @@ if(isset($_GET['login']))
 	{
 		$_SESSION['admin'] = true;
 		$data['meta'] = $lang['logged_in'];
-		$data['body'].= '<h1>'.$data['meta'].'</h1>
-		<h4><a href="index.php?post">← '.$lang['redirect'].': '.$lang['post'].'</a></h4>';
+		$data['body'] .= '<h1>' .$data['meta']. '</h1>
+		<p><a href = "index.php?post">← ' .$lang['redirect']. ': ' .$lang['post']. '</a></p>';
 	}
 	else
 	{
 		$data['meta'] = $lang['login'];
-		$data['body'].= '<form action="auth.php?login" method="post">
-		<h1>'.$data['meta'].'</h1>
-		<h4><input type="password" name="password"/></h4>
-		<h4><input type="submit"/></h4>
+		$data['body'] .= '<form action = "auth.php?login" method = "post">
+		<h1>' .$data['meta']. '</h1>
+		<p><input type = "password" name = "password"/></p>
+		<p><input type = "submit"/></p>
 		</form>';
 	}
 }
@@ -25,8 +25,8 @@ elseif(isset($_GET['logout'], $_SESSION['admin']))
 {
 	unset($_SESSION['admin']);
 	$data['meta'] = $lang['logged_out'];
-	$data['body'].= '<h1>'.$data['meta'].'</h1>
-	<h4><a href="index.php?post">← '.$lang['redirect'].': '.$lang['post'].'</a></h4>';
+	$data['body'] .= '<h1>' .$data['meta']. '</h1>
+	<p><a href = "index.php?post">← ' .$lang['redirect']. ': ' .$lang['post']. '</a></p>';
 }
 else
 {

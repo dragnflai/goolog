@@ -1,7 +1,7 @@
 <?php
 
 //check if goolog is installed
-if(!is_file('data/db.sqlite')) die('Please <a href="install.php">install</a>');
+if(!is_file('data/db.sqlite')) die('Please <a href = "install.php">install</a>');
 
 session_start();
 
@@ -17,8 +17,8 @@ $data['theme'] = $conf[2]['value'];
 $data['lang'] = $conf[3]['value'];
 $data['body'] = '';
 
-setlocale(LC_ALL, $data['lang'].'.UTF-8');
-require 'lang/'.$data['lang'].'.php';
+setlocale(LC_ALL, $data['lang']. '.UTF-8');
+require 'lang/' .$data['lang']. '.php';
 
 // remove $_POST slash and escape sql
 
@@ -30,7 +30,6 @@ if(isset($_POST))
 
 // escape sql
 
-if(isset($_GET))
-	$_GET = array_map('sqlite_escape_string', $_GET);
+if(isset($_GET)) $_GET = array_map('sqlite_escape_string', $_GET);
 
 ?>

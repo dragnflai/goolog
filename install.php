@@ -56,12 +56,12 @@ $data['theme'] = $conf[2]['value'];
 $data['lang'] = $conf[3]['value'];
 $data['body'] = '';
 
-require 'lang/'.$data['lang'].'.php';
+require 'lang/' .$data['lang']. ' .php';
 
 $data['meta'] = 'Installation';
-$data['body'].= '<h1>'.$data['meta'].'</h1>
-	<h4>Goolog is installed!</h4>
-	<h4>The default password is "demo"</h4>';
+$data['body'] .= '<h1>' .$data['meta']. '</h1>
+	<p>Goolog is installed!</p>
+	<p>The default password is "demo"</p>';
 
 require 'footer.php';
 
