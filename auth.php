@@ -16,7 +16,7 @@ if(isset($_GET['login']))
 		$data['meta'] = $lang['login'];
 		$data['body'] .= '<form action = "auth.php?login" method = "post">
 		<h1>' .$data['meta']. '</h1>
-		<p><input type = "password" name = "password"/></p>
+		<p>' .$lang['password']. ' <input type = "password" name = "password"/></p>
 		<p><input type = "submit"/></p>
 		</form>';
 	}

@@ -21,24 +21,20 @@ if(isset($_SESSION['admin']))
 		$data['meta'] = $lang['config'];
 		$data['body'] .= '<form action = "config.php" method = "post">
 		<h1>' .$data['meta']. '</h1>
-		<p>' .$lang['password']. '</p>
-		<p><input type = "password" name = "password" value = "' .$data['pass']. '"/></p>
-		<p>' .$lang['blog_name']. '</p>
-		<p><input name = "title" value = "' .$data['head']. '"/></p>
-		<p>' .$lang['theme']. '</p>
-		<p><select name = "theme">';
+		<p>' .$lang['password']. ' <input type = "password" name = "password" value = "' .$data['pass']. '"/></p>
+		<p>' .$lang['blog_name']. ' <input name = "title" value = "' .$data['head']. '"/></p>
+		<p>' .$lang['theme']. ' <select name = "theme">';
 		foreach($themes as $theme)
 		{
 			$value = basename($theme, '.css');
-			$data['body'] .= '<option value = "' .$value. '">' .$value. '</theme>';
+			$data['body'] .= '<option value = "' .$value. '">' .$value. '</option>';
 		}
 		$data['body'] .= '</select></p>
-		<p>' .$lang['lang']. '</p>
-		<p><select name = "lang">';
+		<p>' .$lang['lang']. ' <select name = "lang">';
 		foreach($languages as $language)
 		{
 			$value = basename($language, '.php');
-			$data['body'] .= '<option value = "' .$value. '">' .$value. '</theme>';
+			$data['body'] .= '<option value = "' .$value. '">' .$value. '</option>';
 		}
 		$data['body'] .= '</select></p>
 		<p><input type = "submit"/></p>

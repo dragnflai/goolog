@@ -15,8 +15,7 @@ if(isset($_GET['post'], $_SESSION['admin']))
 		$data['meta'] = $lang['add'].$lang['post'];
 		$data['body'] .= '<form action = "add.php?post" method = "post">
 		<h1>' .$data['meta']. '</h1>
-		<p>' .$lang['title']. '</p>
-		<p><input name = "title"/></p>
+		<p>' .$lang['title']. ' <input name = "title"/></p>
 		<p>' .$lang['content']. '</p>
 		<p><textarea name = "content" cols = "60" rows = "20"></textarea></p>
 		<p><input type = "submit"/></p>
@@ -39,12 +38,10 @@ elseif(isset($_GET['comment']))
 		$data['meta'] = $lang['add'].$lang['comment']. ': ' .htmlspecialchars($post['title']);
 		$data['body'] .= '<form action = "add.php?comment=' .$_GET['comment']. '" method = "post">
 		<h1>' .$data['meta']. '</h1>
-		<p>' .$lang['name']. '</p>
-		<p><input name = "author"/></p>
+		<p>' .$lang['name']. ' <input name = "author"/></p>
 		<p>' .$lang['content']. '</p>
 		<p><textarea name = "content" cols = "60" rows = "20"></textarea></p>
-		<p>' .$lang['bot']. '</p>
-		<p><input name = "bot"/></p>
+		<p>' .$lang['bot']. ' <input name = "bot"/></p>
 		<p><input type = "submit"/></p>
 		</form>';
 	}
@@ -64,10 +61,8 @@ elseif(isset($_GET['link'], $_SESSION['admin']))
 		$data['meta'] = $lang['add'].$lang['link'];
 		$data['body'] .= '<form action = "add.php?link" method = "post">
 		<h1>' .$data['meta']. '</h1>
-		<p>' .$lang['name']. '</p>
-		<p><input name = "name"/></p>
-		<p>' .$lang['url']. '</p>
-		<p><input name = "url"/></p>
+		<p>' .$lang['name']. ' <input name = "name"/></p>
+		<p>' .$lang['url']. ' <input name = "url"/></p>
 		<p><input type = "submit"/></p>
 		</form>';
 	}
@@ -87,7 +82,7 @@ elseif(isset($_GET['category'], $_SESSION['admin']))
 		$data['meta'] = $lang['add'].$lang['category'];
 		$data['body'] .= '<form action = "add.php?category" method = "post">
 		<h1>' .$data['meta']. '</h1>
-		<p><input name = "name"/></p>
+		<p>' .$lang['name']. ' <input name = "name"/></p>
 		<p><input type = "submit"/></p>
 		</form>';
 	}

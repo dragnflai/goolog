@@ -63,8 +63,7 @@ elseif(isset($_GET['more']))
 	$data['meta'] = $lang['more'];
 	$data['body'] .= '<form action = "index.php?more" method = "post">
 	<h1>' .$lang['search']. '</h1>
-	<p><input name = "search"/></p>
-	<p><input type = "submit"/></p>
+	<p><input name = "search"/> <input type = "submit"/></p>
 	</form>';
 	if(isset($_POST['search'][0]))
 	{

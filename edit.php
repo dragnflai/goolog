@@ -16,8 +16,7 @@ if(isset($_GET['post'], $_SESSION['admin']))
 		$data['meta'] = $lang['edit'].$lang['post'];
 		$data['body'] .= '<form action = "edit.php?post=' .$_GET['post']. '" method = "post">
 		<h1>' .$data['meta']. '</h1>
-		<p>' .$lang['title']. '</p>
-		<p><input name = "title" value = "' .htmlspecialchars($post['title']). '"/></p>
+		<p>' .$lang['title']. ' <input name = "title" value = "' .htmlspecialchars($post['title']). '"/></p>
 		<p>' .$lang['content']. '</p>
 		<p><textarea name = "content" cols = "60" rows = "20">' .htmlspecialchars($post['content']). '</textarea></p>
 		<p><input type = "submit"/></p>
@@ -41,8 +40,7 @@ elseif(isset($_GET['comment'], $_SESSION['admin']))
 		$data['meta'] = $lang['edit'].$lang['comment'];
 		$data['body'] .= '<form action = "edit.php?comment=' .$_GET['comment']. '" method = "post">
 		<h1>' .$data['meta']. '</h1>
-		<p>' .$lang['name']. '</p>
-		<p><input name = "author" value = "' .htmlspecialchars($comment['author']). '"/></p>
+		<p>' .$lang['name']. ' <input name = "author" value = "' .htmlspecialchars($comment['author']). '"/></p>
 		<p>' .$lang['content']. '</p>
 		<p><textarea name = "content" cols = "60" rows = "20">' .htmlspecialchars($comment['content']). '</textarea></p>
 		<p><input type = "submit"/></p>
@@ -65,10 +63,8 @@ elseif(isset($_GET['link'], $_SESSION['admin']))
 		$data['meta'] = $lang['edit'].$lang['link'];
 		$data['body'] .= '<form action = "edit.php?link=' .$_GET['link']. '" method = "post">
 		<h1>' .$data['meta']. '</h1>
-		<p>' .$lang['name']. '</p>
-		<p><input name = "name" value = "' .htmlspecialchars($link['name']). '"/></p>
-		<p>' .$lang['url']. '</p>
-		<p><input name = "url" value = "' .htmlspecialchars($link['url']). '"/></p>
+		<p>' .$lang['name']. ' <input name = "name" value = "' .htmlspecialchars($link['name']). '"/></p>
+		<p>' .$lang['url']. ' <input name = "url" value = "' .htmlspecialchars($link['url']). '"/></p>
 		<p><input type = "submit"/></p>
 		</form>';
 	}
@@ -89,7 +85,7 @@ elseif(isset($_GET['category'], $_SESSION['admin']))
 		$data['meta'] = $lang['edit'].$lang['category'];
 		$data['body'] .= '<form action = "edit.php?category=' .$_GET['category']. '" method = "post">
 		<h1>' .$data['meta']. '</h1>
-		<p><input name = "name" value = "' .htmlspecialchars($category['name']). '"/></p>
+		<p>' .$lang['name']. ' <input name = "name" value = "' .htmlspecialchars($category['name']). '"/></p>
 		<p><input type = "submit"/></p>
 		</form>';
 	}
