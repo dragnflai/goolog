@@ -33,8 +33,11 @@ p {
 #footer ul {
 	padding: 0;
 }
-#menu ul li, #footer ul li {
+#menu ul li, #footer ul li, #page ul li, .meta ul li {
 	display: inline;
+}
+#menu ul li:after, #footer ul li:after, #page ul li:after, .meta ul li:after {
+	content: " :: ";
 }
 .meta {
 	border-bottom: 1px dotted #666;
