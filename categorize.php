@@ -9,17 +9,17 @@ if(isset($_GET['post'], $_SESSION['admin']))
 		db_q($db, 'UPDATE post SET pid = \'' .$_POST['pid']. '\' WHERE id = \'' .$_GET['post']. '\'');
 		$data['meta'] = $lang['post'].$lang['categorized'];
 		$data['body'] .= '<h1>' .$data['meta']. '</h1>
-		<p><a href = "view.php?post=' .$_GET['post']. '">← ' .$lang['redirect']. ': ' .htmlspecialchars($post['title']). '</a></p>';
+		<p><a href = "view.php?post=' .$_GET['post']. '">← ' .$lang['redirect']. ': ' .$post['title']. '</a></p>';
 	}
 	else
 	{
-		$data['meta'] = $lang['categorize'].$lang['post']. ': ' .htmlspecialchars($post['title']);
+		$data['meta'] = $lang['categorize'].$lang['post']. ': ' .$post['title'];
 		$data['body'] .= '<form action = "categorize.php?post=' .$_GET['post']. '" method = "post">
 		<h1>' .$data['meta']. '</h1>';
 		$categories = db_qr($db, 'SELECT * FROM category');
 		foreach($categories as $category)
 		{
-			$data['body'] .= '<p><input type = "radio" name = "pid" value = "' .$category['id']. '"/>' .htmlspecialchars($category['name']). '</p>';
+			$data['body'] .= '<p><input type = "radio" name = "pid" value = "' .$category['id']. '"/>' .$category['name']. '</p>';
 		}
 		$data['body'] .= '<p><input type = "submit"/></p>
 		</form>';

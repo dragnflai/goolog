@@ -17,6 +17,7 @@ if(isset($_GET['post'], $_SESSION['admin']))
 		<h1>' .$data['meta']. '</h1>
 		<p>' .$lang['title']. ' <input name = "title"/></p>
 		<p>' .$lang['content']. '</p>
+		<p>[b] [i] [u] [s] [img] [url] [youtube]</p>
 		<p><textarea name = "content" cols = "60" rows = "20"></textarea></p>
 		<p><input type = "submit"/></p>
 		</form>';
@@ -35,11 +36,12 @@ else if(isset($_GET['comment']))
 	}
 	else
 	{
-		$data['meta'] = $lang['add'].$lang['comment']. ': ' .htmlspecialchars($post['title']);
+		$data['meta'] = $lang['add'].$lang['comment']. ': ' .$post['title'];
 		$data['body'] .= '<form action = "add.php?comment=' .$_GET['comment']. '" method = "post">
 		<h1>' .$data['meta']. '</h1>
 		<p>' .$lang['name']. ' <input name = "author"/></p>
 		<p>' .$lang['content']. '</p>
+		<p>[b] [i] [u] [s] [img] [url] [youtube]</p>
 		<p><textarea name = "content" cols = "60" rows = "20"></textarea></p>
 		<p>' .$lang['bot']. ' <input name = "bot"/></p>
 		<p><input type = "submit"/></p>

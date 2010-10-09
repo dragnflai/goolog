@@ -16,9 +16,10 @@ if(isset($_GET['post'], $_SESSION['admin']))
 		$data['meta'] = $lang['edit'].$lang['post'];
 		$data['body'] .= '<form action = "edit.php?post=' .$_GET['post']. '" method = "post">
 		<h1>' .$data['meta']. '</h1>
-		<p>' .$lang['title']. ' <input name = "title" value = "' .htmlspecialchars($post['title']). '"/></p>
+		<p>' .$lang['title']. ' <input name = "title" value = "' .$post['title']. '"/></p>
 		<p>' .$lang['content']. '</p>
-		<p><textarea name = "content" cols = "60" rows = "20">' .htmlspecialchars($post['content']). '</textarea></p>
+		<p>[b] [i] [u] [s] [img] [url] [youtube]</p>
+		<p><textarea name = "content" cols = "60" rows = "20">' .$post['content']. '</textarea></p>
 		<p><input type = "submit"/></p>
 		</form>';
 	}
@@ -32,7 +33,7 @@ else if(isset($_GET['comment'], $_SESSION['admin']))
 		$post = db_qrs($db, 'SELECT id, title FROM post WHERE id = ( SELECT pid FROM comment WHERE id = \'' .$_GET['comment']. '\')');
 		$data['meta'] = $lang['comment'].$lang['saved'];
 		$data['body'] .= '<h1>' .$data['meta']. '</h1>
-		<p><a href = "view.php?post=' .$post['id']. '">← ' .$lang['redirect']. ': ' .htmlspecialchars($post['title']). '</a></p>';
+		<p><a href = "view.php?post=' .$post['id']. '">← ' .$lang['redirect']. ': ' .$post['title']. '</a></p>';
 	}
 	else
 	{
@@ -40,9 +41,10 @@ else if(isset($_GET['comment'], $_SESSION['admin']))
 		$data['meta'] = $lang['edit'].$lang['comment'];
 		$data['body'] .= '<form action = "edit.php?comment=' .$_GET['comment']. '" method = "post">
 		<h1>' .$data['meta']. '</h1>
-		<p>' .$lang['name']. ' <input name = "author" value = "' .htmlspecialchars($comment['author']). '"/></p>
+		<p>' .$lang['name']. ' <input name = "author" value = "' .$comment['author']. '"/></p>
 		<p>' .$lang['content']. '</p>
-		<p><textarea name = "content" cols = "60" rows = "20">' .htmlspecialchars($comment['content']). '</textarea></p>
+		<p>[b] [i] [u] [s] [img] [url] [youtube]</p>
+		<p><textarea name = "content" cols = "60" rows = "20">' .$comment['content']. '</textarea></p>
 		<p><input type = "submit"/></p>
 		</form>';
 	}
@@ -63,8 +65,8 @@ else if(isset($_GET['link'], $_SESSION['admin']))
 		$data['meta'] = $lang['edit'].$lang['link'];
 		$data['body'] .= '<form action = "edit.php?link=' .$_GET['link']. '" method = "post">
 		<h1>' .$data['meta']. '</h1>
-		<p>' .$lang['name']. ' <input name = "name" value = "' .htmlspecialchars($link['name']). '"/></p>
-		<p>' .$lang['url']. ' <input name = "url" value = "' .htmlspecialchars($link['url']). '"/></p>
+		<p>' .$lang['name']. ' <input name = "name" value = "' .$link['name']. '"/></p>
+		<p>' .$lang['url']. ' <input name = "url" value = "' .$link['url']. '"/></p>
 		<p><input type = "submit"/></p>
 		</form>';
 	}
@@ -85,7 +87,7 @@ else if(isset($_GET['category'], $_SESSION['admin']))
 		$data['meta'] = $lang['edit'].$lang['category'];
 		$data['body'] .= '<form action = "edit.php?category=' .$_GET['category']. '" method = "post">
 		<h1>' .$data['meta']. '</h1>
-		<p>' .$lang['name']. ' <input name = "name" value = "' .htmlspecialchars($category['name']). '"/></p>
+		<p>' .$lang['name']. ' <input name = "name" value = "' .$category['name']. '"/></p>
 		<p><input type = "submit"/></p>
 		</form>';
 	}

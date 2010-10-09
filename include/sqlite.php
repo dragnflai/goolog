@@ -7,13 +7,18 @@ function db_open()
 
 function db_qr($db, $sql)
 {
-	return sqlite_array_query($db, $sql, SQLITE_ASSOC);
+	$results = array();
+	foreach(sqlite_array_query($db, $sql, SQLITE_ASSOC) as $result)
+	{
+		$results[] = array_map('htmlspecialchars', $result);
+	}
+	return $results;
 }
 
 function db_qrs($db, $sql)
 {
-	$result = db_qr($db, $sql);
-	return $result[0];
+	$results = sqlite_array_query($db, $sql, SQLITE_ASSOC);
+	return array_map('htmlspecialchars',$results[0]);
 }
 
 function db_q($db, $sql)
