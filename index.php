@@ -8,15 +8,15 @@ if(isset($_GET['post']))
 {
 	$data['meta'] = $lang['post'];
 	$data['body'] .= '<h1>' .(isset($_SESSION['admin'])? '<a href = "add.php?post">[+]</a>' : '').$data['meta']. '</h1>';
-	$count = db_qrs('SELECT count(*) FROM post');
+	$count = db_qrs($db, 'SELECT count(*) FROM post');
 	$total = ceil($count['count(*)']/4);
 	if($_GET['post'] < 1 || $_GET['post'] > $total) $_GET['post']=1;
 	$offset = 4*($_GET['post']-1);
-	$posts = db_qr('SELECT * FROM post ORDER BY id DESC LIMIT 4 OFFSET ' .$offset);
+	$posts = db_qr($db, 'SELECT * FROM post ORDER BY id DESC LIMIT 4 OFFSET ' .$offset);
 	foreach($posts as $post)
 	{
-		$count = db_qrs('SELECT count(*) FROM comment WHERE pid = ' .$post['id']);
-		$category = db_qrs('SELECT name FROM category WHERE id = ' .$post['pid']);
+		$count = db_qrs($db, 'SELECT count(*) FROM comment WHERE pid = ' .$post['id']);
+		$category = db_qrs($db, 'SELECT name FROM category WHERE id = ' .$post['pid']);
 		$data['body'] .= '<h3>' .(isset($_SESSION['admin'])? '<a href = "categorize.php?post=' .$post['id']. '">[#]</a><a href = "edit.php?post=' .$post['id']. '">[!]</a><a href = "delete.php?post=' .$post['id']. '">[x]</a>' : '').htmlspecialchars($post['title']). '</h3>
 
 		<p>' .nl2br($post['content']). '</p>
@@ -34,15 +34,15 @@ if(isset($_GET['post']))
 	($_GET['post'] < $total? '<li><a href = "index.php?post=' .($_GET['post']+1). '">' .$lang['next']. ' →</a></li>' : '').
 	'</ul></div>';
 }
-elseif(isset($_GET['comment']))
+else if(isset($_GET['comment']))
 {
 	$data['meta'] = $lang['comment'];
 	$data['body'] .= '<h1>' .$data['meta']. '</h1>';
-	$count = db_qrs('SELECT count(*) FROM comment');
+	$count = db_qrs($db, 'SELECT count(*) FROM comment');
 	$total = ceil($count['count(*)']/4);
 	if($_GET['comment'] < 1 || $_GET['comment'] > $total) $_GET['comment']=1;
 	$offset = 4*($_GET['comment']-1);
-	$comments = db_qr('SELECT * FROM comment ORDER BY id DESC LIMIT 4 OFFSET ' .$offset);
+	$comments = db_qr($db, 'SELECT * FROM comment ORDER BY id DESC LIMIT 4 OFFSET ' .$offset);
 	foreach($comments as $comment)
 	{
 		$data['body'] .= '<h3>' .(isset($_SESSION['admin'])? '<a href = "edit.php?comment=' .$comment['id']. '">[!]</a><a href = "delete.php?comment=' .$comment['id']. '">[x]</a>' : '').htmlspecialchars($comment['author']).$lang['said']. ' ...</h3>
@@ -58,7 +58,7 @@ elseif(isset($_GET['comment']))
 }
 
 
-elseif(isset($_GET['more']))
+else if(isset($_GET['more']))
 {
 	$data['meta'] = $lang['more'];
 	$data['body'] .= '<form action = "index.php?more" method = "post">
@@ -67,7 +67,7 @@ elseif(isset($_GET['more']))
 	</form>';
 	if(isset($_POST['search'][0]))
 	{
-		$posts = db_qr('SELECT id, title FROM post WHERE title LIKE \'%' .$_POST['search']. '%\' OR content LIKE \'%' .$_POST['search']. '%\'');
+		$posts = db_qr($db, 'SELECT id, title FROM post WHERE title LIKE \'%' .$_POST['search']. '%\' OR content LIKE \'%' .$_POST['search']. '%\'');
 		$data['body'] .= '<ul>';
 		foreach($posts as $post)
 		{
@@ -76,7 +76,7 @@ elseif(isset($_GET['more']))
 		$data['body'] .= '</ul>';
 	}
 	$data['body'] .= '<h1>' .(isset($_SESSION['admin'])? '<a href = "add.php?link">[+]</a>' : '').$lang['link']. '</h1>';
-	$links = db_qr('SELECT * FROM link');
+	$links = db_qr($db, 'SELECT * FROM link');
 	$data['body'] .= '<ul>';
 	foreach($links as $link)
 	{
@@ -84,20 +84,20 @@ elseif(isset($_GET['more']))
 	}
 	$data['body'] .= '</ul>';
 	$data['body'] .= '<h1>' .(isset($_SESSION['admin'])? '<a href = "add.php?category">[+]</a>' : '').$lang['category']. '</h1>';
-	$categories = db_qr('SELECT * FROM category');
+	$categories = db_qr($db, 'SELECT * FROM category');
 	$data['body'] .= '<ul>';
 	foreach($categories as $category)
 	{
-		$count = db_qrs('SELECT count(*) FROM post WHERE pid = ' .$category['id']);
+		$count = db_qrs($db, 'SELECT count(*) FROM post WHERE pid = ' .$category['id']);
 		$data['body'] .= '<li>' .(isset($_SESSION['admin'])? '<a href = "edit.php?category=' .$category['id']. '">[!]</a><a href = "delete.php?category=' .$category['id']. '">[x]</a>' : ''). '<a href = "view.php?category=' .$category['id']. '">' .htmlspecialchars($category['name']). ' (' .$count['count(*)']. ')</a></li>';
 	}
 	$data['body'] .= '</ul>';
 	$data['body'] .= '<h1>' .$lang['archive']. '</h1>';
-	$archives = db_qr('SELECT DISTINCT strftime(\'%Y-%m\', date, \'unixepoch\') FROM post');
+	$archives = db_qr($db, 'SELECT DISTINCT strftime(\'%Y-%m\', date, \'unixepoch\') FROM post');
 	$data['body'] .= '<ul>';
 	foreach($archives as $archive)
 	{
-		$count = db_qrs('SELECT count(*) FROM post WHERE strftime(\'%Y-%m\', date, \'unixepoch\') = \'' .$archive['strftime(\'%Y-%m\', date, \'unixepoch\')']. '\'');
+		$count = db_qrs($db, 'SELECT count(*) FROM post WHERE strftime(\'%Y-%m\', date, \'unixepoch\') = \'' .$archive['strftime(\'%Y-%m\', date, \'unixepoch\')']. '\'');
 		$data['body'] .= '<li><a href = "view.php?archive=' .$archive['strftime(\'%Y-%m\', date, \'unixepoch\')']. '">' .strftime('%B %Y', strtotime($archive['strftime(\'%Y-%m\', date, \'unixepoch\')'])). ' (' .$count['count(*)']. ')</a></li>';
 	}
 	$data['body'] .= '</ul>';

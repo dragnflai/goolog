@@ -1,30 +1,28 @@
 <?php
 
-
-//query that return
-
-function db_qr($sql)
+function db_open()
 {
-	$db = sqlite_open('data/db.sqlite');
-	$result = sqlite_array_query($db, $sql, SQLITE_ASSOC);
-	sqlite_close($db);
-	return $result;
+	return sqlite_open('data/db.sqlite');
 }
 
-//query that only return the first result
-
-function db_qrs($sql)
+function db_qr($db, $sql)
 {
-	$result = db_qr($sql);
+	return sqlite_array_query($db, $sql, SQLITE_ASSOC);
+}
+
+function db_qrs($db, $sql)
+{
+	$result = db_qr($db, $sql);
 	return $result[0];
 }
 
-//query that does not return
-
-function db_q($sql)
+function db_q($db, $sql)
 {
-	$db = sqlite_open('data/db.sqlite');
 	sqlite_exec($db, $sql);
+}
+
+function db_close($db)
+{
 	sqlite_close($db);
 }
 

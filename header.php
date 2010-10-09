@@ -1,20 +1,20 @@
 <?php
 
 //check if goolog is installed
-if(!is_file('data/db.sqlite')) die('Please <a href = "install.php">install</a>');
+if(!is_file('data/db.sqlite')) die(header('Location: install.php'));
 
 session_start();
+header('Content-Type: text/html; charset=UTF-8'); 
 
 //load config
 require 'include/sqlite.php';
+$db = db_open();
 
-header('Content-Type: text/html; charset=UTF-8'); 
-
-$conf = db_qr('SELECT value FROM conf');
-$data['head'] = $conf[0]['value'];
-$data['pass'] = $conf[1]['value'];
-$data['theme'] = $conf[2]['value'];
-$data['lang'] = $conf[3]['value'];
+$config = db_qr($db, 'SELECT value FROM config');
+$data['head'] = $config[0]['value'];
+$data['pass'] = $config[1]['value'];
+$data['theme'] = $config[2]['value'];
+$data['lang'] = $config[3]['value'];
 $data['body'] = '';
 
 setlocale(LC_ALL, $data['lang']. '.UTF-8');

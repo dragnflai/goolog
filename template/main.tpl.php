@@ -5,7 +5,8 @@
 <meta name = "description" content = "<?php echo $data['meta'];?>"/>
 <title><?php echo $data['meta'];?> - <?php echo $data['head'];?></title>
 <link rel = "stylesheet" type = "text/css" href = "theme/<?php echo $data['theme'];?>.css"/>
-<link rel = "alternate" type = "application/atom+xml" href = "feed.php"/>
+<link rel = "alternate" type = "application/atom+xml" href = "feed.php?post" title = "<?php echo $lang['post'];?>"/>
+<link rel = "alternate" type = "application/atom+xml" href = "feed.php?comment" title = "<?php echo $lang['comment'];?>"/>
 </head>
 <body>
 <div id = "container">
@@ -24,7 +25,7 @@
 </div>
 <div id = "footer"><ul>
 <li><?php echo $lang['powered_by'];?> <a href = "http://github.com/goolog/">Goolog</a></li>
-<li><a href = "feed.php"><?php echo $lang['feed'];?></a></li>
+<li><a href = "feed.php?post"><?php echo $lang['feed'];?></a></li>
 </ul></div>
 </div>
 </body>

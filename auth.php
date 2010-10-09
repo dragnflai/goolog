@@ -21,7 +21,7 @@ if(isset($_GET['login']))
 		</form>';
 	}
 }
-elseif(isset($_GET['logout'], $_SESSION['admin']))
+else if(isset($_GET['logout'], $_SESSION['admin']))
 {
 	unset($_SESSION['admin']);
 	$data['meta'] = $lang['logged_out'];

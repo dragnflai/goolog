@@ -6,10 +6,10 @@ if(isset($_SESSION['admin']))
 {
 	if(isset($_POST['password'][0], $_POST['title'][0], $_POST['theme'][0], $_POST['lang'][0]))
 	{
-		db_q('UPDATE conf SET value = \'' .$_POST['password']. '\' WHERE name = \'password\'');
-		db_q('UPDATE conf SET value = \'' .$_POST['title']. '\' WHERE name = \'title\'');
-		db_q('UPDATE conf SET value = \'' .$_POST['theme']. '\' WHERE name = \'theme\'');
-		db_q('UPDATE conf SET value = \'' .$_POST['lang']. '\' WHERE name = \'lang\'');
+		db_q($db, 'UPDATE config SET value = \'' .$_POST['password']. '\' WHERE name = \'password\'');
+		db_q($db, 'UPDATE config SET value = \'' .$_POST['title']. '\' WHERE name = \'title\'');
+		db_q($db, 'UPDATE config SET value = \'' .$_POST['theme']. '\' WHERE name = \'theme\'');
+		db_q($db, 'UPDATE config SET value = \'' .$_POST['lang']. '\' WHERE name = \'lang\'');
 		$data['meta'] = $lang['config'].$lang['saved'];
 		$data['body'] .= '<h1>' .$data['meta']. '</h1>
 		<p><a href = "index.php?post">← ' .$lang['redirect']. ': ' .$lang['post']. '</a></p>';
