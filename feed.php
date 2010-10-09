@@ -7,7 +7,7 @@ $data['url'] = 'http://' .$_SERVER['SERVER_NAME'].dirname($_SERVER['SCRIPT_NAME'
 if(isset($_GET['post']))
 {
 	$data['meta'] = $lang['post'];
-	$posts = db_qr($db, 'SELECT * FROM post ORDER BY id DESC LIMIT 4');
+	$posts = db_qr($db, 'SELECT id, date, title, content FROM post ORDER BY id DESC LIMIT 4');
 	foreach($posts as $post)
 	{
 		$data['body'] .= '<entry>
@@ -23,7 +23,7 @@ if(isset($_GET['post']))
 else if(isset($_GET['comment']))
 {
 	$data['meta'] = $lang['comment'];
-	$comments = db_qr($db, 'SELECT * FROM comment ORDER BY id DESC LIMIT 4');
+	$comments = db_qr($db, 'SELECT id, date, author, content FROM comment ORDER BY id DESC LIMIT 4');
 	foreach($comments as $comment)
 	{
 		$data['body'] .= '<entry>

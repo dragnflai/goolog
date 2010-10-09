@@ -16,7 +16,7 @@ if(isset($_GET['post'], $_SESSION['admin']))
 		$data['meta'] = $lang['categorize'].$lang['post']. ': ' .$post['title'];
 		$data['body'] .= '<form action = "categorize.php?post=' .$_GET['post']. '" method = "post">
 		<h1>' .$data['meta']. '</h1>';
-		$categories = db_qr($db, 'SELECT * FROM category');
+		$categories = db_qr($db, 'SELECT id, name FROM category');
 		foreach($categories as $category)
 		{
 			$data['body'] .= '<p><input type = "radio" name = "pid" value = "' .$category['id']. '"/>' .$category['name']. '</p>';

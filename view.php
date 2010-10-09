@@ -4,8 +4,8 @@ require 'header.php';
 if(isset($_GET['post']))
 {
 	require 'include/bbcode.php';
-	$post = db_qrs($db, 'SELECT * FROM post WHERE id = \'' .$_GET['post']. '\'');
-	$comments = db_qr($db, 'SELECT * FROM comment WHERE pid = ' .$post['id']);
+	$post = db_qrs($db, 'SELECT id, pid, date, title, content FROM post WHERE id = \'' .$_GET['post']. '\'');
+	$comments = db_qr($db, 'SELECT id, date, author, content FROM comment WHERE pid = ' .$post['id']);
 	$category = db_qrs($db, 'SELECT name FROM category WHERE id = ' .$post['pid']);
 	$data['meta'] = $post['title'];
 	$data['body'] .= '<h1>' .(isset($_SESSION['admin'])? '<a href = "categorize.php?post=' .$post['id']. '">[#]</a><a href = "edit.php?post=' .$post['id']. '">[!]</a><a href = "delete.php?post=' .$post['id']. '">[x]</a>' : '').$data['meta']. '</h1>
@@ -25,7 +25,7 @@ if(isset($_GET['post']))
 }
 else if(isset($_GET['category']))
 {
-	$category = db_qrs($db, 'SELECT * FROM category WHERE id = \'' .$_GET['category']. '\'');
+	$category = db_qrs($db, 'SELECT id, name FROM category WHERE id = \'' .$_GET['category']. '\'');
 	$posts = db_qr($db, 'SELECT id, title FROM post WHERE pid = ' .$category['id']);
 	$data['meta'] = $category['name'];
 	$data['body'] .= '<h1>' .(isset($_SESSION['admin'])? '<a href = "edit.php?category=' .$category['id']. '">[!]</a><a href = "delete.php?category=' .$category['id']. '">[x]</a>' : '').$data['meta']. '</h1>

@@ -3,13 +3,13 @@
 function bbcode($text)
 {
 	//the pattern to be matched
-	$pattern[] = '#\[b\](.*?)\[\/b\]#i';
-	$pattern[] = '#\[i\](.*?)\[\/i\]#i';
-	$pattern[] = '#\[u\](.*?)\[\/u\]#i';
-	$pattern[] = '#\[s\](.*?)\[\/s\]#i';
-	$pattern[] = '#\[img\](.*?)\[\/img\]#i';
-	$pattern[] = '#\[url\](.*?)\[\/url\]#i';
-	$pattern[] = '#\[youtube\]http://www.youtube.com/watch\?v\=(.*?)\[\/youtube\]#i';
+	$pattern[] = '#\[b\](.*?)\[/b\]#i';
+	$pattern[] = '#\[i\](.*?)\[/i\]#i';
+	$pattern[] = '#\[u\](.*?)\[/u\]#i';
+	$pattern[] = '#\[s\](.*?)\[/s\]#i';
+	$pattern[] = '#\[img\](.*?)\[/img\]#i';
+	$pattern[] = '#\[url\](.*?)\[/url\]#i';
+	$pattern[] = '#\[youtube\]http://www.youtube.com/watch\?v=(.*?)\[/youtube\]#i';
 	//the replacement
 	$replace[] = '<b>$1</b>';
 	$replace[] = '<i>$1</i>';
