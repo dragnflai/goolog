@@ -1,7 +1,10 @@
 html {
 	border-top: 20px solid #fc3;
-	padding: 2% 10%;
 	letter-spacing: 1px;
+}
+#container {
+	width: 640px;
+	margin: auto;
 }
 ul {
 	list-style: none;
@@ -12,22 +15,22 @@ a {
 }
 h1 {
 	color: #666;
-	font-size: large;
+	font-size: 20px;
 }
 h2 {
-	font-size: x-large;
+	font-size: 24px;
 }
 h3 {
 	color: #666;
-	font-size: medium;
+	font-size: 16px;
 }
 p {
-	font-size: small;
+	font-size: 14px;
 	line-height: 2;
 }
 #menu {
 	border-bottom: 1px dotted #666;
-	font-size: small;
+	font-size: 14px;
 	text-align: right;
 }
 #footer ul {
@@ -42,6 +45,6 @@ p {
 .meta {
 	border-bottom: 1px dotted #666;
 	color: #660;
-	font-size: small;
+	font-size: 14px;
 	text-align: right;
 }

@@ -19,6 +19,6 @@ function bbcode($text)
 	$replace[] = '<a href ="$1">$1</a>';
 	$replace[] = '<iframe width="480" height="390" src="http://www.youtube.com/embed/$1" frameborder="0"></iframe>';
 	//the variable for the replace
-	return preg_replace($pattern, $replace, $text);
+	return nl2br(preg_replace($pattern, $replace, $text));
 }
 ?>

@@ -19,7 +19,7 @@ if(isset($_GET['post']))
 		$count = db_qrs($db, 'SELECT count(id) FROM comment WHERE pid = ' .$post['id']);
 		$category = db_qrs($db, 'SELECT name FROM category WHERE id = ' .$post['pid']);
 		$data['body'] .= '<h3>' .(isset($_SESSION['admin'])? '<a href = "categorize.php?post=' .$post['id']. '">[#]</a><a href = "edit.php?post=' .$post['id']. '">[!]</a><a href = "delete.php?post=' .$post['id']. '">[x]</a>' : '').$post['title']. '</h3>
-		<p>' .nl2br(bbcode($post['content'])). '</p>
+		<p>' .bbcode($post['content']). '</p>
 		<p><a href = "view.php?post=' .$post['id']. '">' .$lang['read_more']. '</a></p>
 		<div class = "meta"><ul>
 		<li><a href = "view.php?category=' .$post['pid']. '">' .$category['name']. '</a></li>
@@ -46,7 +46,7 @@ else if(isset($_GET['comment']))
 	foreach($comments as $comment)
 	{
 		$data['body'] .= '<h3>' .(isset($_SESSION['admin'])? '<a href = "edit.php?comment=' .$comment['id']. '">[!]</a><a href = "delete.php?comment=' .$comment['id']. '">[x]</a>' : '').$comment['author'].$lang['said']. ' ...</h3>
-		<p>' .nl2br(bbcode($comment['content'])). '</p>
+		<p>' .bbcode($comment['content']). '</p>
 		<p><a href = "view.php?post=' .$comment['pid']. '">' .$lang['read_more']. '</a></p>
 		<div class = "meta"><ul><li>' .strftime('%B %e, %Y, %l:%M %p', $comment['date']). '</li></ul></div>';
 	}
