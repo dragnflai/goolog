@@ -15,9 +15,9 @@ function bbcode($text)
 	$replace[] = '<i>$1</i>';
 	$replace[] = '<u>$1</u>';
 	$replace[] = '<del>$1</del>';
-	$replace[] = '<img src = "$1"/>';
-	$replace[] = '<a href ="$1">$1</a>';
-	$replace[] = '<iframe width="480" height="390" src="http://www.youtube.com/embed/$1" frameborder="0"></iframe>';
+	$replace[] = '<img src = "$1" alt = ""/>';
+	$replace[] = '<a href = "$1">$1</a>';
+	$replace[] = '<iframe width = "480" height = "390" src = "http://www.youtube.com/embed/$1?rel=0" frameborder = "0"></iframe>';
 	//the variable for the replace
 	return nl2br(preg_replace($pattern, $replace, $text));
 }

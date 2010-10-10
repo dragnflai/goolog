@@ -6,11 +6,11 @@ $data['url'] = 'http://' .$_SERVER['SERVER_NAME'].dirname($_SERVER['SCRIPT_NAME'
 
 if(isset($_GET['post']))
 {
-	$data['meta'] = $lang['post'];
+	$data['subtitle'] = $lang['post'];
 	$posts = db_qr($db, 'SELECT id, date, title, content FROM post ORDER BY id DESC LIMIT 4');
 	foreach($posts as $post)
 	{
-		$data['body'] .= '<entry>
+		$data['content'] .= '<entry>
 		<id>' .$data['url']. 'view.php?post=' .$post['id']. '</id>
 		<title>' .$post['title']. '</title>
 		<updated>' .strftime('%Y-%m-%dT%H:%M:%S%z', $post['date']). '</updated>
@@ -22,11 +22,11 @@ if(isset($_GET['post']))
 
 else if(isset($_GET['comment']))
 {
-	$data['meta'] = $lang['comment'];
+	$data['subtitle'] = $lang['comment'];
 	$comments = db_qr($db, 'SELECT id, date, author, content FROM comment ORDER BY id DESC LIMIT 4');
 	foreach($comments as $comment)
 	{
-		$data['body'] .= '<entry>
+		$data['content'] .= '<entry>
 		<id>' .$data['url']. 'view.php?comment=' .$comment['id']. '</id>
 		<title>' .$comment['author']. '</title>
 		<updated>' .strftime('%Y-%m-%dT%H:%M:%S%z', $comment['date']). '</updated>

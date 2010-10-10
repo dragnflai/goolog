@@ -10,33 +10,33 @@ if(isset($_SESSION['admin']))
 		db_q($db, 'UPDATE config SET value = \'' .$_POST['title']. '\' WHERE name = \'title\'');
 		db_q($db, 'UPDATE config SET value = \'' .$_POST['theme']. '\' WHERE name = \'theme\'');
 		db_q($db, 'UPDATE config SET value = \'' .$_POST['lang']. '\' WHERE name = \'lang\'');
-		$data['meta'] = $lang['config'].$lang['saved'];
-		$data['body'] .= '<h1>' .$data['meta']. '</h1>
-		<p><a href = "index.php?post">← ' .$lang['redirect']. ': ' .$lang['post']. '</a></p>';
+		$data['subtitle'] = $lang['config'].$lang['saved'];
+		$data['content'] .= '<h1>' .$data['subtitle']. '</h1>
+		<p><a href = "index.php?post">← ' .$lang['redirect']. '：' .$lang['post']. '</a></p>';
 	}
 	else
 	{
 		$themes = glob('theme/*.css');
 		$languages = glob('lang/*.php');
-		$data['meta'] = $lang['config'];
-		$data['body'] .= '<form action = "config.php" method = "post">
-		<h1>' .$data['meta']. '</h1>
-		<p>' .$lang['password']. ' <input type = "password" name = "password" value = "' .$data['pass']. '"/></p>
-		<p>' .$lang['blog_name']. ' <input name = "title" value = "' .$data['head']. '"/></p>
+		$data['subtitle'] = $lang['config'];
+		$data['content'] .= '<form action = "config.php" method = "post">
+		<h1>' .$data['subtitle']. '</h1>
+		<p>' .$lang['password']. ' <input type = "password" name = "password" value = "' .$data['password']. '"/></p>
+		<p>' .$lang['blog_name']. ' <input name = "title" value = "' .$data['title']. '"/></p>
 		<p>' .$lang['theme']. ' <select name = "theme">';
 		foreach($themes as $theme)
 		{
 			$value = basename($theme, '.css');
-			$data['body'] .= '<option value = "' .$value. '">' .$value. '</option>';
+			$data['content'] .= '<option value = "' .$value. '">' .$value. '</option>';
 		}
-		$data['body'] .= '</select></p>
-		<p>' .$lang['lang']. ' <select name = "lang">';
+		$data['content'] .= '</select></p>
+		<p>' .$lang['language']. ' <select name = "lang">';
 		foreach($languages as $language)
 		{
 			$value = basename($language, '.php');
-			$data['body'] .= '<option value = "' .$value. '">' .$value. '</option>';
+			$data['content'] .= '<option value = "' .$value. '">' .$value. '</option>';
 		}
-		$data['body'] .= '</select></p>
+		$data['content'] .= '</select></p>
 		<p><input type = "submit"/></p>
 		</form>';
 	}

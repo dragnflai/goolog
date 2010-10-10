@@ -1,50 +1,51 @@
 html {
 	border-top: 20px solid #fc3;
 	letter-spacing: 1px;
-}
-#container {
-	width: 640px;
-	margin: auto;
+	font-size: 16px;
 }
 ul {
 	list-style: none;
 }
 a {
 	color: #036;
-	padding: 0 1px;
+	margin: 0 1px;
 }
 h1 {
 	color: #666;
-	font-size: 20px;
-}
-h2 {
 	font-size: 24px;
 }
-h3 {
-	color: #666;
-	font-size: 16px;
+h2 {
+	font-size: 32px;
 }
 p {
-	font-size: 14px;
 	line-height: 2;
 }
 #menu {
 	border-bottom: 1px dotted #666;
-	font-size: 14px;
 	text-align: right;
+}
+#container {
+	width: 640px;
+	margin: auto;
 }
 #footer ul {
 	padding: 0;
 }
-#menu ul li, #footer ul li, #page ul li, .meta ul li {
+#menu ul li, #footer ul li, #page ul li, .entry-footer ul li {
 	display: inline;
 }
-#menu ul li:after, #footer ul li:after, #page ul li:after, .meta ul li:after {
+#menu ul li:after, #footer ul li:after, #page ul li:after, .entry-footer ul li:after {
 	content: " :: ";
 }
-.meta {
-	border-bottom: 1px dotted #666;
+.entry-header {
+	color: #666;
+	font-size: 20px;
+}
+.entry-footer {
 	color: #660;
-	font-size: 14px;
 	text-align: right;
+}
+.entry-container {
+	margin: 12px 0;
+	border-bottom: 1px dotted #666;
 }

@@ -18,7 +18,7 @@ $lang['title'] = '標題';
 $lang['content'] = '內容';
 $lang['deleted'] = '已刪除';
 $lang['name'] = '名稱';
-$lang['bot'] = '留言機器人： 請留空';
+$lang['bot'] = '留言機器人：請留空';
 $lang['read_more'] = '繼續閱讀';
 $lang['search'] = '搜尋';
 $lang['link'] = '網誌連結';
@@ -34,6 +34,6 @@ $lang['password'] = '密碼';
 $lang['powered_by'] = '使用';
 $lang['feed'] = '訂閱網誌';
 $lang['theme'] = '佈景主題';
-$lang['lang'] = '語言套件';
+$lang['language'] = '語言套件';
 $lang['blog_name'] = '網誌名稱';
 ?>

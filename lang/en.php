@@ -18,7 +18,7 @@ $lang['title'] = 'Title';
 $lang['content'] = 'Content';
 $lang['deleted'] = ' deleted';
 $lang['name'] = 'Name';
-$lang['bot'] = 'Bot： Please leave this field empty';
+$lang['bot'] = 'Bot：Please leave this field empty';
 $lang['read_more'] = 'Read more';
 $lang['search'] = 'Search';
 $lang['link'] = 'Link';
@@ -34,6 +34,6 @@ $lang['password'] = 'Password';
 $lang['powered_by'] = 'Powered by';
 $lang['feed'] = 'Feed';
 $lang['theme'] = 'Theme';
-$lang['lang'] = 'Language';
+$lang['language'] = 'Language';
 $lang['blog_name'] = 'Blog name';
 ?>

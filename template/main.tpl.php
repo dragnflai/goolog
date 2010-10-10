@@ -2,15 +2,15 @@
 <html xmlns = "http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv = "content-type" content = "text/html;charset = UTF-8"/>
-<meta name = "description" content = "<?php echo $data['meta'];?>"/>
-<title><?php echo $data['meta'];?> - <?php echo $data['head'];?></title>
+<meta name = "description" content = "<?php echo $data['subtitle'];?>"/>
+<title><?php echo $data['subtitle'];?> - <?php echo $data['title'];?></title>
 <link rel = "stylesheet" type = "text/css" href = "theme/<?php echo $data['theme'];?>.css"/>
 <link rel = "alternate" type = "application/atom+xml" href = "feed.php?post" title = "<?php echo $lang['feed'];?> (<?php echo $lang['post'];?>)"/>
 <link rel = "alternate" type = "application/atom+xml" href = "feed.php?comment" title = "<?php echo $lang['feed'];?> (<?php echo $lang['comment'];?>)"/>
 </head>
 <body>
 <div id = "container">
-<div id = "header"><h2><?php echo $data['head'];?></h2></div>
+<div id = "header"><h2><?php echo $data['title'];?></h2></div>
 <div id = "menu"><ul>
 <li><a href = "index.php?post"><?php echo $lang['post'];?></a></li>
 <li><a href = "index.php?comment"><?php echo $lang['comment'];?></a></li>
@@ -21,7 +21,7 @@
 '<li><a href = "auth.php?login">' .$lang['login']. '</a></li>';?>
 </ul></div>
 <div id = "main">
-<?php echo $data['body'];?>
+<?php echo $data['content'];?>
 </div>
 <div id = "footer"><ul>
 <li><?php echo $lang['powered_by'];?> <a href = "http://github.com/goolog/">Goolog</a></li>

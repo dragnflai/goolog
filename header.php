@@ -11,11 +11,11 @@ require 'include/sqlite.php';
 $db = db_open();
 
 $config = db_qr($db, 'SELECT value FROM config');
-$data['head'] = $config[0]['value'];
-$data['pass'] = $config[1]['value'];
+$data['title'] = $config[0]['value'];
+$data['password'] = $config[1]['value'];
 $data['theme'] = $config[2]['value'];
 $data['lang'] = $config[3]['value'];
-$data['body'] = '';
+$data['content'] = '';
 
 setlocale(LC_ALL, $data['lang']. '.UTF-8');
 require 'lang/' .$data['lang']. '.php';
