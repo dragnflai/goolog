@@ -24,7 +24,6 @@ if(isset($_GET['post'], $_SESSION['admin']))
 		</form>';
 	}
 }
-
 else if(isset($_GET['comment'], $_SESSION['admin']))
 {
 	if(isset($_POST['author'][0], $_POST['content'][0]))
@@ -49,7 +48,6 @@ else if(isset($_GET['comment'], $_SESSION['admin']))
 		</form>';
 	}
 }
-
 else if(isset($_GET['link'], $_SESSION['admin']))
 {
 	if(isset($_POST['name'][0], $_POST['url'][0]))
@@ -71,7 +69,6 @@ else if(isset($_GET['link'], $_SESSION['admin']))
 		</form>';
 	}
 }
-
 else if(isset($_GET['category'], $_SESSION['admin']))
 {
 	if(isset($_POST['name'][0]))
@@ -97,5 +94,6 @@ else
 	header('Location: index.php');
 }
 
+$template = 'main';
 require 'footer.php';
 ?>

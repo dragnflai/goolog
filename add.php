@@ -23,7 +23,6 @@ if(isset($_GET['post'], $_SESSION['admin']))
 		</form>';
 	}
 }
-
 else if(isset($_GET['comment']))
 {
 	$post = db_qrs($db, 'SELECT title FROM post WHERE id = \'' .$_GET['comment']. '\'');
@@ -48,7 +47,6 @@ else if(isset($_GET['comment']))
 		</form>';
 	}
 }
-
 else if(isset($_GET['link'], $_SESSION['admin']))
 {
 	if(isset($_POST['name'][0], $_POST['url'][0]))
@@ -69,7 +67,6 @@ else if(isset($_GET['link'], $_SESSION['admin']))
 		</form>';
 	}
 }
-
 else if(isset($_GET['category'], $_SESSION['admin']))
 {
 	if(isset($_POST['name'][0]))
@@ -94,5 +91,6 @@ else
 	header('Location: index.php');
 }
 
+$template = 'main';
 require 'footer.php';
 ?>

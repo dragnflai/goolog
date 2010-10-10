@@ -64,8 +64,6 @@ else if(isset($_GET['comment']))
 	($_GET['comment'] < $total? '<li><a href = "index.php?comment=' .($_GET['comment']+1). '">' .$lang['next']. ' →</a></li>' : '').
 	'</ul></div>';
 }
-
-
 else if(isset($_GET['more']))
 {
 	$data['subtitle'] = $lang['more'];
@@ -123,5 +121,6 @@ else
 	header('Location: index.php?post');
 }
 
+$template = 'main';
 require 'footer.php';
 ?>

@@ -46,6 +46,6 @@ else
 	header('Location: index.php');
 }
 
-
+$template = 'main';
 require 'footer.php';
 ?>

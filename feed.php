@@ -19,7 +19,6 @@ if(isset($_GET['post']))
 		</entry>';
 	}
 }
-
 else if(isset($_GET['comment']))
 {
 	$data['subtitle'] = $lang['comment'];
@@ -35,11 +34,11 @@ else if(isset($_GET['comment']))
 		</entry>';
 	}
 }
-
 else
 {
 	header('Location: feed.php?post');
 }
 
-require 'template/feed.tpl.php';
+$template = 'feed';
+require 'footer.php';
 ?>

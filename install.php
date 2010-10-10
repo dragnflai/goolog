@@ -5,7 +5,9 @@
 if(!is_file('data/db.sqlite'))
 {
 	require 'include/sqlite.php';
+	
 	$db = db_open();
+	
 	db_q($db, 'CREATE TABLE post (
 	id INTEGER PRIMARY KEY NOT NULL,
 	pid INTEGER NOT NULL DEFAULT 1,
@@ -49,8 +51,8 @@ if(!is_file('data/db.sqlite'))
 	db_q($db, 'INSERT INTO category (name) VALUES ("Uncategorized")');
 	
 	db_close($db);
-	
-	header('Location: index.php');
 }
+
+header('Location: index.php');
 
 ?>
