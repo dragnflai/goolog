@@ -2,6 +2,7 @@ html {
 	border-top: 20px solid #fc3;
 	letter-spacing: 1px;
 	font-size: 16px;
+	line-height: 2;
 }
 ul {
 	list-style: none;
@@ -16,9 +17,6 @@ h1 {
 }
 h2 {
 	font-size: 32px;
-}
-p {
-	line-height: 2;
 }
 #menu {
 	border-bottom: 1px dotted #666;
