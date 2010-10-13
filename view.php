@@ -4,15 +4,15 @@ require 'header.php';
 if(isset($_GET['post']))
 {
 	require 'include/bbcode.php';
-	$post = db_qrs($db, 'SELECT id, pid, date, title, content FROM post WHERE id = \'' .$_GET['post']. '\'');
-	$comments = db_qr($db, 'SELECT id, date, author, content FROM comment WHERE pid = ' .$post['id']);
+	$post = db_qrs($db, 'SELECT pid, date, title, content FROM post WHERE id = \'' .$_GET['post']. '\'');
+	$comments = db_qr($db, 'SELECT id, date, author, content FROM comment WHERE pid = ' .$_GET['post']);
 	$category = db_qrs($db, 'SELECT name FROM category WHERE id = ' .$post['pid']);
 	$data['subtitle'] = $post['title'];
 	$data['content'] .= '<div class = "entry-container">
-	<div class = "entry-header"><h1>' .(isset($_SESSION['admin'])? '<a href = "categorize.php?post=' .$post['id']. '">[#]</a><a href = "edit.php?post=' .$post['id']. '">[!]</a><a href = "delete.php?post=' .$post['id']. '">[x]</a>' : '').$data['subtitle']. '</h1></div>
+	<div class = "entry-header"><h1>' .(isset($_SESSION['admin'])? '<a href = "categorize.php?post=' .$_GET['post']. '">[#]</a><a href = "edit.php?post=' .$_GET['post']. '">[!]</a><a href = "delete.php?post=' .$_GET['post']. '">[x]</a>' : '').$data['subtitle']. '</h1></div>
 	<div class = "entry-main">
 	<p>' .bbcode($post['content']). '</p>
-	<p><a href = "add.php?comment=' .$post['id']. '">' .$lang['leave_reply']. '</a></p>
+	<p><a href = "add.php?comment=' .$_GET['post']. '">' .$lang['leave_reply']. '</a></p>
 	</div>
 	<div class = "entry-footer"><ul>
 	<li><a href = "view.php?category=' .$post['pid']. '">' .$category['name']. '</a></li>
@@ -33,10 +33,10 @@ if(isset($_GET['post']))
 }
 else if(isset($_GET['category']))
 {
-	$category = db_qrs($db, 'SELECT id, name FROM category WHERE id = \'' .$_GET['category']. '\'');
-	$posts = db_qr($db, 'SELECT id, title FROM post WHERE pid = ' .$category['id']);
+	$category = db_qrs($db, 'SELECT name FROM category WHERE id = \'' .$_GET['category']. '\'');
+	$posts = db_qr($db, 'SELECT id, title FROM post WHERE pid = ' .$_GET['category']);
 	$data['subtitle'] = $category['name'];
-	$data['content'] .= '<h1>' .(isset($_SESSION['admin'])? '<a href = "edit.php?category=' .$category['id']. '">[!]</a><a href = "delete.php?category=' .$category['id']. '">[x]</a>' : '').$data['subtitle']. '</h1>
+	$data['content'] .= '<h1>' .(isset($_SESSION['admin'])? '<a href = "edit.php?category=' .$_GET['category']. '">[!]</a><a href = "delete.php?category=' .$_GET['category']. '">[x]</a>' : '').$data['subtitle']. '</h1>
 	<ul>';
 	foreach($posts as &$post)
 	{

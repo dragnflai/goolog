@@ -22,14 +22,14 @@ if(isset($_GET['post']))
 else if(isset($_GET['comment']))
 {
 	$data['subtitle'] = $lang['comment'];
-	$comments = db_qr($db, 'SELECT id, date, author, content FROM comment ORDER BY id DESC LIMIT 4');
+	$comments = db_qr($db, 'SELECT pid, date, author, content FROM comment ORDER BY id DESC LIMIT 4');
 	foreach($comments as &$comment)
 	{
 		$data['content'] .= '<entry>
-		<id>' .$data['url']. 'view.php?comment=' .$comment['id']. '</id>
+		<id>' .$data['url']. 'view.php?post=' .$comment['pid']. '</id>
 		<title>' .$comment['author']. '</title>
 		<updated>' .strftime('%Y-%m-%dT%H:%M:%S%z', $comment['date']). '</updated>
-		<link href = "' .$data['url']. 'view.php?comment=' .$comment['id']. '"/>
+		<link href = "' .$data['url']. 'view.php?post=' .$comment['pid']. '"/>
 		<summary type = "html">' .htmlspecialchars(bbcode($comment['content'])). '</summary>
 		</entry>';
 	}
