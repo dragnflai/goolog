@@ -53,6 +53,6 @@ if(!is_file('data/db.sqlite'))
 	db_close($db);
 }
 
-header('Location: index.php');
+header('Location: index.php?post');
 
 ?>

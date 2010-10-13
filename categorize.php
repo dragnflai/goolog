@@ -17,7 +17,7 @@ if(isset($_GET['post'], $_SESSION['admin']))
 		$data['content'] .= '<form action = "categorize.php?post=' .$_GET['post']. '" method = "post">
 		<h1>' .$data['subtitle']. '</h1>';
 		$categories = db_qr($db, 'SELECT id, name FROM category');
-		foreach($categories as $category)
+		foreach($categories as &$category)
 		{
 			$data['content'] .= '<p><input type = "radio" name = "pid" value = "' .$category['id']. '"/>' .$category['name']. '</p>';
 		}
@@ -27,7 +27,7 @@ if(isset($_GET['post'], $_SESSION['admin']))
 }
 else
 {
-	header('Location: index.php');
+	header('Location: index.php?post');
 }
 
 $template = 'main';

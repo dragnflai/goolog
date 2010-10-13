@@ -20,7 +20,7 @@ if(isset($_GET['post']))
 	<li>' .strftime('%B %e, %Y, %l:%M %p', $post['date']). '</li>
 	</ul></div>
 	</div>';
-	foreach($comments as $comment)
+	foreach($comments as &$comment)
 	{
 		$data['content'] .= '<div class = "entry-container">
 		<div class = "entry-header">' .(isset($_SESSION['admin'])? '<a href = "edit.php?comment=' .$comment['id']. '">[!]</a><a href = "delete.php?comment=' .$comment['id']. '">[x]</a>' : '').$comment['author'].$lang['said']. ' ...</div>
@@ -38,7 +38,7 @@ else if(isset($_GET['category']))
 	$data['subtitle'] = $category['name'];
 	$data['content'] .= '<h1>' .(isset($_SESSION['admin'])? '<a href = "edit.php?category=' .$category['id']. '">[!]</a><a href = "delete.php?category=' .$category['id']. '">[x]</a>' : '').$data['subtitle']. '</h1>
 	<ul>';
-	foreach($posts as $post)
+	foreach($posts as &$post)
 	{
 		$data['content'] .= '<li>' .(isset($_SESSION['admin'])? '<a href = "categorize.php?post=' .$post['id']. '">[#]</a><a href = "edit.php?post=' .$post['id']. '">[!]</a><a href = "delete.php?post=' .$post['id']. '">[x]</a>' : ''). '<a href = "view.php?post=' .$post['id']. '">' .$post['title']. '</a></li>';
 	}
@@ -50,7 +50,7 @@ else if(isset($_GET['archive']))
 	$data['content'] .= '<h1>' .$data['subtitle']. '</h1>';
 	$posts = db_qr($db, 'SELECT id, title FROM post WHERE strftime(\'%Y-%m\', date, \'unixepoch\') = \'' .$_GET['archive']. '\'');
 	$data['content'] .= '<ul>';
-	foreach($posts as $post)
+	foreach($posts as &$post)
 	{
 		$data['content'] .= '<li>' .(isset($_SESSION['admin'])? '<a href = "categorize.php?post=' .$post['id']. '">[#]</a><a href = "edit.php?post=' .$post['id']. '">[!]</a><a href = "delete.php?post=' .$post['id']. '">[x]</a>' : ''). '<a href = "view.php?post=' .$post['id']. '">' .$post['title']. '</a></li>';
 	}
@@ -58,7 +58,7 @@ else if(isset($_GET['archive']))
 }
 else
 {
-	header('Location: index.php');
+	header('Location: index.php?post');
 }
 
 $template = 'main';

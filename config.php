@@ -24,14 +24,14 @@ if(isset($_SESSION['admin']))
 		<p>' .$lang['password']. ' <input type = "password" name = "password" value = "' .$data['password']. '"/></p>
 		<p>' .$lang['blog_name']. ' <input name = "title" value = "' .$data['title']. '"/></p>
 		<p>' .$lang['theme']. ' <select name = "theme">';
-		foreach($themes as $theme)
+		foreach($themes as &$theme)
 		{
 			$value = basename($theme, '.css');
 			$data['content'] .= '<option value = "' .$value. '">' .$value. '</option>';
 		}
 		$data['content'] .= '</select></p>
 		<p>' .$lang['language']. ' <select name = "lang">';
-		foreach($languages as $language)
+		foreach($languages as &$language)
 		{
 			$value = basename($language, '.php');
 			$data['content'] .= '<option value = "' .$value. '">' .$value. '</option>';
@@ -43,7 +43,7 @@ if(isset($_SESSION['admin']))
 }
 else
 {
-	header('Location: index.php');
+	header('Location: index.php?post');
 }
 
 $template = 'main';

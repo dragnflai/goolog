@@ -8,7 +8,7 @@ if(isset($_GET['post']))
 {
 	$data['subtitle'] = $lang['post'];
 	$posts = db_qr($db, 'SELECT id, date, title, content FROM post ORDER BY id DESC LIMIT 4');
-	foreach($posts as $post)
+	foreach($posts as &$post)
 	{
 		$data['content'] .= '<entry>
 		<id>' .$data['url']. 'view.php?post=' .$post['id']. '</id>
@@ -23,7 +23,7 @@ else if(isset($_GET['comment']))
 {
 	$data['subtitle'] = $lang['comment'];
 	$comments = db_qr($db, 'SELECT id, date, author, content FROM comment ORDER BY id DESC LIMIT 4');
-	foreach($comments as $comment)
+	foreach($comments as &$comment)
 	{
 		$data['content'] .= '<entry>
 		<id>' .$data['url']. 'view.php?comment=' .$comment['id']. '</id>

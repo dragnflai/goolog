@@ -1,6 +1,6 @@
 <?php
 
-function bbcode($text)
+function bbcode(&$text)
 {
 	//the pattern to be matched
 	$pattern[] = '#\[b\](.*?)\[/b\]#i';

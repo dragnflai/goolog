@@ -88,7 +88,7 @@ else if(isset($_GET['category'], $_SESSION['admin']))
 }
 else
 {
-	header('Location: index.php');
+	header('Location: index.php?post');
 }
 
 $template = 'main';
