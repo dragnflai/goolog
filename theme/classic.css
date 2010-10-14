@@ -1,8 +1,10 @@
-html {
-	border-top: 20px solid #fc3;
+* {
 	letter-spacing: 1px;
 	font-size: 16px;
 	line-height: 2;
+}
+html {
+	border-top: 20px solid #fc3;
 }
 ul {
 	list-style: none;
@@ -20,6 +22,15 @@ h2 {
 }
 h3 {
 	font-size: 20px;
+}
+textarea {
+	width: 640px;
+}
+input {
+	width: 320px;
+}
+input[type="submit"] {
+	width: 100px;
 }
 #menu {
 	border-bottom: 1px dotted #666;
